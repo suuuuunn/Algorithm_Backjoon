@@ -7,7 +7,8 @@ public class Main {
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
 		int n_count = 0;
-		int min = 666; int num = 666;
+		int min = 666;
+		
 		while (true) {
 			int min2 = min; int count = 0;
 			while (min2 > 0) {
@@ -22,12 +23,11 @@ public class Main {
 				n_count++;
 			}
 			if (n_count == n) {
-				num = min;
 				break;
 			}
 			min++;
 		}
-		System.out.println(num);
+		System.out.println(min);
 		
 	}
 	
