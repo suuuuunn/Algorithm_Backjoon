@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 
 public class Main {
 
@@ -9,22 +8,12 @@ public class Main {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		
-		BigInteger fc = new BigInteger("1");
-		for (int i=1; i<=n; i++) {
-			fc = fc.multiply(BigInteger.valueOf(i));
+		int count = n/5;
+		if (n / 25 >= 1) {
+			count += n / 25;
 		}
-		String s = fc+ ""; int count = 0;
-		if (n >= 5) {
-			for (int i=s.length()-1; i>=0; i--) {
-				if (s.charAt(i) == '0') {
-					count++;
-				} else {
-					break;
-				}
-			}
-		} else {
-			count = 0;
+		if (n / 125 >= 1) {
+			count += n / 125;
 		}
 		System.out.println(count);
 	}
