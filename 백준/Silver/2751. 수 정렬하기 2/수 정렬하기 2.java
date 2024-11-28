@@ -1,26 +1,28 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+		StringBuilder sb = new StringBuilder();
 		int n = Integer.parseInt(br.readLine());
-		int arr[] = new int[n]; int p = 0;
+        
+		// counting sort 사용하기
+		boolean arr[] = new boolean[2000001];
 		for (int i=0; i<n; i++) {
-			arr[i] = Integer.parseInt(br.readLine());
+			arr[Integer.parseInt(br.readLine()) + 1000000] = true;
 		}
 		
-		Arrays.sort(arr);
-		
-		for (int i=0; i<n; i++) {
-			System.out.println(arr[i]);
+		for (int i=0; i<arr.length; i++) {
+			if (arr[i]) {
+				sb.append((i-1000000)).append("\n");
+			}
 		}
 		
+		System.out.print(sb);
 	}
 	
 }
