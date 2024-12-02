@@ -27,10 +27,7 @@ public class Main {
 		});
 		
 		for (int i=0; i<n; i++) {
-			for (int j=0; j<2; j++) {
-				sb.append(arr[i][j]).append(" ");
-			}
-			sb.append("\n");
+			sb.append(arr[i][0] + " " + arr[i][1]).append("\n");
 		}
 		System.out.println(sb);
 	}
