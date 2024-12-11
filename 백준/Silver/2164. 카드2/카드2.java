@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
 
@@ -12,19 +12,18 @@ public class Main {
 		
 		int n = Integer.parseInt(br.readLine());
 		
-		Deque<Integer> deque = new ArrayDeque<>();
+		Queue<Integer> que = new LinkedList<>();
 		
 		for (int i=1; i<=n; i++) {
-			deque.add(i);
+			que.add(i);
 		}
-		// System.out.println(list);
 	
-		while (deque.size() > 1) {
-			deque.poll();
-			deque.add(deque.poll());
+		while (que.size() > 1) {
+			que.poll();
+			que.add(que.poll());
 		}
 		
-		System.out.println(deque.peek());
+		System.out.println(que.peek());
 		
 	}
 	
