@@ -1,15 +1,16 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
 	
+	static int que[] = new int[2000000];
 	static StringBuilder sb = new StringBuilder();
-	static Queue<Integer> que = new LinkedList<>();
-	static int last = 0;
+	
+	static int size = 0;
+	static int front = 0;
+	static int back = 0;
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -32,34 +33,39 @@ public class Main {
 		System.out.println(sb);
 	}
 
-	
 	static void push(Integer x) {
-		que.offer(x);
-		last = x;
+		size++;
+		que[back] = x;
+		back++;
 	}
 	
 	static void pop() {
-		if (que.size() == 0) sb.append(-1).append("\n");
-		else sb.append(que.poll()).append("\n");
+		if (size == 0) {
+			sb.append(-1).append("\n");
+		} else {
+			sb.append(que[front]).append("\n");
+			size--;
+			front++;
+		}
 	}
 	
 	static void size() {
-		sb.append(que.size()).append("\n");
+		sb.append(size).append("\n");
 	}
 	
 	static void empty() {
-		if (que.isEmpty()) sb.append(1).append("\n");
+		if (size == 0) sb.append(1).append("\n");
 		else sb.append(0).append("\n");
 	}
 	
 	static void front() {
-		if (que.isEmpty()) sb.append(-1).append("\n");
-		else sb.append(que.peek()).append("\n");
+		if (size == 0) sb.append(-1).append("\n");
+		else sb.append(que[front]).append("\n");
 	}
 	
 	static void back() {
-		if (que.isEmpty()) sb.append(-1).append("\n");
-		else sb.append(last).append("\n");
+		if (size == 0) sb.append(-1).append("\n");
+		else sb.append(que[back - 1]).append("\n");
 	}
 	
 }
