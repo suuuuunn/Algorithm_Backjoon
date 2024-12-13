@@ -6,48 +6,60 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-
+	
+	static StringBuilder sb = new StringBuilder();
+	static Queue<Integer> que = new LinkedList<>();
+	static int last = 0;
+	
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
+		StringTokenizer st;
 		
 		int n = Integer.parseInt(br.readLine());
-		int last = 0;
-		
-		Queue<Integer> que = new LinkedList<>();
-		
-		for (int i=0; i<n; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			
-			switch (st.nextToken()) {
-			case "push": 
-				last = Integer.parseInt(st.nextToken());
-				que.offer(last);
-				break;
-			case "pop": 
-				if (que.isEmpty()) sb.append("-1").append("\n");
-				else sb.append(que.poll()).append("\n");
-				break;
-			case "size":
-				sb.append(que.size()).append("\n");
-				break;
-			case "empty":
-				if (que.isEmpty()) sb.append("1").append("\n");
-				else sb.append("0").append("\n");
-				break;
-			case "front":
-				if (que.isEmpty()) sb.append("-1").append("\n");
-				else sb.append(que.peek()).append("\n");
-				break;
-			case "back":
-				if (que.isEmpty()) sb.append("-1").append("\n");
-				else sb.append(last).append("\n");
-				break;
+
+		while (n-- > 0) {
+			st = new StringTokenizer(br.readLine(), " ");
+			switch(st.nextToken()) {
+			case "push": push(Integer.parseInt(st.nextToken())); break;
+			case "pop": pop(); break;
+			case "size": size(); break;
+			case "empty": empty(); break;
+			case "front": front(); break;
+			case "back": back(); break;
 			}
 		}
-        System.out.println(sb);
-		
+		System.out.println(sb);
+	}
+
+	
+	static void push(Integer x) {
+		que.offer(x);
+		last = x;
+	}
+	
+	static void pop() {
+		if (que.size() == 0) sb.append(-1).append("\n");
+		else sb.append(que.poll()).append("\n");
+	}
+	
+	static void size() {
+		sb.append(que.size()).append("\n");
+	}
+	
+	static void empty() {
+		if (que.isEmpty()) sb.append(1).append("\n");
+		else sb.append(0).append("\n");
+	}
+	
+	static void front() {
+		if (que.isEmpty()) sb.append(-1).append("\n");
+		else sb.append(que.peek()).append("\n");
+	}
+	
+	static void back() {
+		if (que.isEmpty()) sb.append(-1).append("\n");
+		else sb.append(last).append("\n");
 	}
 	
 }
