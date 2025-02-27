@@ -16,10 +16,11 @@ public class Main {
 			HashMap<String, Integer> hmap = new HashMap<>();
 			int k = Integer.parseInt(br.readLine());
 			while (k-- > 0) {
-				StringTokenizer st = new StringTokenizer(br.readLine());
-				st.nextToken(); // 옷 이름은 필요 없음
-				String kind = st.nextToken(); // 옷 종류
-				// 처음이면 1, 처음이 아니면 +1
+				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+				st.nextToken(); // 이름은 필요없음
+				String kind = st.nextToken(); // 옷의 종류
+				
+				// 같은 종류의 옷이면 value값 + 1
 				if (hmap.containsKey(kind)) {
 					hmap.put(kind, hmap.get(kind) + 1);
 				} else {
@@ -27,13 +28,11 @@ public class Main {
 				}
 			}
 			int count = 1;
-			
 			for (int val: hmap.values()) {
 				count *= (val + 1);
 			}
-			// 모두 선택 안했을 경우 제외
 			sb.append(count - 1).append("\n");
 		}
 		System.out.println(sb);
 	}
-} 
+}
